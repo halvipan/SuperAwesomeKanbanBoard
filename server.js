@@ -89,7 +89,7 @@ app.post('/project/:projectid/update', async (req, res) => {
 })
 
 //find from id and destroy project, redirect to home
-app.post('/project/:projectid/destroy', async (req, res) => {
+app.get('/project/:projectid/destroy', async (req, res) => {
     const project = await Project.findByPk(req.params.projectid)
     await project.destroy()
     res.redirect('/')

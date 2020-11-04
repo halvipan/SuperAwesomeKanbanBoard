@@ -13,7 +13,12 @@
         {{#each projects}}
             <a href="./project/{{this.id}}">
                 <div class="galleryItem" style="background-image: url({{this.image}});">
-                    <h3>{{this.name}}</h3>
+                    <div>
+                        <h3>{{this.name}}</h3>
+                        <form action="./project/{{this.id}}/destroy" method="GET">
+                            <input type="submit" value="click to remove" >
+                        </form>
+                    </div>
                 </div>
             </a>
         {{/each}}
