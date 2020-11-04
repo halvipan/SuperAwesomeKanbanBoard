@@ -43,26 +43,15 @@ app.get('/project/:id', async (req, res) => {
 })
 
 app.get('/user/:id', async (req, res) => {
-    const user = await User.findByPk(req.params.id,{ 
+    const user = JSON.stringify(await User.findByPk(req.params.id,{ 
         include: [{all : true, nested: true}], 
         logging: false 
-    })    
-    const tasks = await Task.findAll({ where : {ProjectId : req.params.id }});
-    res.render('project', {user: JSON.stringify(user), tasks: JSON.stringify(tasks)});
+    }))
+    const projects = JSON.stringify(await Project.findAll({
+        logging: false
+    }))
+    res.render('user', {user, projects});
 })
-
-
-
-//get user from taskid, return user
-app.get('/task/:taskid/user', async (req, res) => {
-    const task = await Task.findByPk(req.params.taskid)
-    const user = await User.findByPk(task.UserId)
-    return user
-})
-
-
-
-
 
 //create user, redirect back
 app.post('/user/create', async (req, res) => {
