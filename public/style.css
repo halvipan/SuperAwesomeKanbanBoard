@@ -77,12 +77,24 @@ h1, h3 {
 
 .taskEdit {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
     padding: 0.5vh;
 }
 
 .taskEdit a {
+    font-size: 5vh;
+    padding-right: 1vh;
+    vertical-align: middle;
+    margin-left: auto;
     text-decoration: none;
+}
+
+.taskEdit .avatar img{
+    height: 5vh;
+}
+
+.taskEdit .button{
+    height: 3.5vh
 }
 
 .task p {
@@ -97,14 +109,66 @@ img {
     height: 50px;
     margin: 0 0.5vh;
 }
+
+
+
+.over {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #0E192F;
+    overflow-x: hidden;
+    transition: 1s;
+}
+.over-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 25%;
+    line-height: 200%;
+    color: white;
+}
+.userList {
+    font-size: 2vh;
+    display: flex;
+    flex-direction: column;
+}
+.user{
+    border: #507EB9 .3vh solid;
+    color: #0E192F;
+    border-radius: 2vh;
+    background-color: #E7EAEF;
+    margin-left: 3vh;
+    margin-right: 3vh;
+    margin-bottom: 1vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1vh;
+    transition: 1s;
+}
+.user img{
+    margin-left: 1.5vh;
+    border: #507EB9 .3vh solid;
+    border-radius: 50%;
+}
+.user:hover{
+    transform-origin: center;
+    transform: scale(1.05, 1.05);
+}
+
+
+
+
 .topBar{
     text-align: center;
     padding: .5vh;
     font-size: 3vh;
 }
-.topBar h2{
-    margin: 0;
-}
+
 .userFormBar{
     padding: 1vh;
     display: flex;
@@ -120,7 +184,12 @@ img {
     font-size: 100%;
     border: #0E192F solid 1px;
 }
-
+.arrow{
+    margin-right: auto;
+    font-size: 5vh;
+    color: #0E192F;
+    transition: 1s;
+}
 .button{
     color: white;
     background-color: #0E192F;

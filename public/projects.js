@@ -49,10 +49,10 @@ const viewTaskDesktop = (task) => {
           `
         })}
         </select> 
-        <a href="/task/${task.id}/destroy" method="POST">&#10060</a>
+        ${showAvatar(task.UserId)}
+        <a href="/task/${task.id}/destroy" method="POST">&#10005</a>
       </div> 
       <p>${task.description}</p>
-      ${showAvatar(task.UserId)}
     </div>
 `
 }
@@ -60,7 +60,7 @@ const showAvatar = userId => {
   if (userId){
     const user = state.users.find(user => user.id === Number(userId));
     return `
-      <div id='userIMG'>
+      <div class="avatar" id='userIMG'>
         <img src="${user.avatar}" />
       </div>
     `  

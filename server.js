@@ -26,7 +26,8 @@ app.use(express.json())
 //get all projects {id, name}, render home view
 app.get('/', async (req, res) => {
     const projects = await Project.findAll({ logging: false })
-    res.render('home', {projects})
+    const users = await User.findAll({ logging: false })
+    res.render('home', {projects, users})
 })
 
 //get full project with nested tasks, sort tasks by task.status, return project, sorted tasks and users, render projects view
@@ -39,6 +40,15 @@ app.get('/project/:id', async (req, res) => {
     const users = await User.findAll({ logging: false })
     const tasks = await Task.findAll({ where : {ProjectId : req.params.id }});
     res.render('project', {tasks: JSON.stringify(tasks), users: JSON.stringify(users), project: JSON.stringify(project)});
+})
+
+app.get('/user/:id', async (req, res) => {
+    const user = await User.findByPk(req.params.id,{ 
+        include: [{all : true, nested: true}], 
+        logging: false 
+    })    
+    const tasks = await Task.findAll({ where : {ProjectId : req.params.id }});
+    res.render('project', {user: JSON.stringify(user), tasks: JSON.stringify(tasks)});
 })
 
 

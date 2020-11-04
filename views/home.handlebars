@@ -1,13 +1,27 @@
 <div class="desktopView">
+    <div id="users" class="over">
+        <div class="over-content">
+            <h1 style="margin-bottom: 3vh;">All Users</h1>
+            <div class="userList">
+                {{#each users}}
+                    <a class="user" href="./user/{{this.id}}">{{this.name}}
+                        <img src="{{this.avatar}}" />
+                    </a>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+
     <div class="topBar">
         <h2>Super Awesome Kanban Board</h2>
     </div>
-    <div class="userFormBar">
-        <form class="userForm"action="/user/create" method="POST">
+    <div id="bar" class="userFormBar">
+        <form class="userForm" action="/user/create" method="POST">
             <input type="text" id="name" name="name" placeholder="Name" required> <br>
             <input type="url" id="avatar" name="avatar" placeholder="Avatar Url" required> <br>
             <input class="button" type="submit" value="Add User">
         </form>
+        <a class="arrow" id="irrow" href="javascript:;" onclick="opencloseUsers()">&#10142</a>
     </div>
     <section class="gallery">
         {{#each projects}}
@@ -70,5 +84,20 @@
     function hideUserForm(){
         let element = document.querySelector(".userFormPhone")
         element.classList.add("hidden")
+    }
+    function opencloseUsers(){
+        if (document.getElementById("users").style.width == "25%") {
+            document.getElementById("users").style.width = "0"
+            let arrow = document.getElementById("irrow")
+            arrow.style.transform = "rotate(0deg)"
+            arrow.style.marginLeft = "0"
+            }
+
+        else {
+            document.getElementById("users").style.width = "25%"
+            let arrow = document.getElementById("irrow")
+            arrow.style.transform = "rotate(180deg)"
+            arrow.style.marginLeft = "25vw"
+        }
     }
 </script>
