@@ -4,7 +4,7 @@ const expressHandlebars = require('express-handlebars')
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
 const app = express()
 
-const { Project, Task, User, sequelize } = require('./models/models.js')
+const { Project, Task, User, Day, sequelize } = require('./models/models.js')
 
 const handlebars = expressHandlebars({
     handlebars: allowInsecurePrototypeAccess(Handlebars)
@@ -47,10 +47,7 @@ app.get('/user/:id', async (req, res) => {
         include: [{all : true, nested: true}], 
         logging: false 
     }))
-    const projects = JSON.stringify(await Project.findAll({
-        logging: false
-    }))
-    res.render('user', {user, projects});
+    res.render('user', {user});
 })
 
 //create user, redirect back
@@ -124,6 +121,13 @@ app.get('/task/:taskid/destroy', async (req, res) => {
 app.post('/task/:taskid/assign', async (req, res) => {
     const task = await Task.findByPk(req.params.taskid,{ logging: false })
     await task.update({UserId: req.body.UserId});
+    res.redirect('back')
+})
+
+// 
+app.post('/task/:taskid/day', async (req, res) => {
+    const task = await Task.findByPk(req.params.taskid,{ logging: false })
+    await task.update({DayId: req.body.DayId});
     res.redirect('back')
 })
 

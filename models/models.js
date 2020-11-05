@@ -12,6 +12,7 @@ const sequelize = process.env.NODE_ENV === 'production'
 class Project extends Model {};
 class Task extends Model {};
 class User extends Model {};
+class Day extends Model {};
 
 Project.init(
     {
@@ -23,6 +24,7 @@ Project.init(
 Task.init(
     {
         description: DataTypes.STRING,
+        DayId: DataTypes.STRING,
         status: {type:  DataTypes.INTEGER, defaultValue: 0}
     },
     {sequelize}
@@ -34,8 +36,9 @@ User.init(
     },
     {sequelize}
 )
+
 Project.hasMany(Task, {as: 'tasks'});
 Task.belongsTo(Project);
 User.hasMany(Task, {as: 'tasks'});
 
-module.exports = {Project, Task, User, sequelize};
+module.exports = {Project, Task, User, Day, sequelize};
