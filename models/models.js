@@ -6,7 +6,7 @@ const connectionSettings = {
     production: {dialect: 'postgres', protocal: 'postgres'}
 }
 const sequelize = process.env.NODE_ENV === 'production'
-    ? new Sequelize(process.env.HEROKU_POSTGRESQL_CYAN_URL, connectionSettings[process.env.NODE_ENV])
+    ? new Sequelize(process.env.DATABASE_URL, connectionSettings[process.env.NODE_ENV])
     : new Sequelize(connectionSettings[process.env.NODE_ENV])
 
 class Project extends Model {};
