@@ -363,8 +363,11 @@ footer {
 .calendar {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    margin: 1vh;
+    margin: 4vh;
     gap: .2vh;
+    padding: 4vh;
+    border: black .2vh solid;
+    border-radius: 4vh;
 }
 
 .header {
