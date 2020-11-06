@@ -43,7 +43,7 @@ const task = (task) => {
 
 const calendar = (date) => {
     const daysInMonth = new Date(date.getFullYear(), date.getMonth()+1, 0).getDate()
-    const blocks = new Date(date.getFullYear(), date.getMonth()+1, 1).getDay() + 1
+    const blocks = new Date(date.getFullYear(), date.getMonth()+2, 1).getDay() + 1
     const calendar = []
     for (let step = 0; step < blocks; step++) {
         calendar.push(`

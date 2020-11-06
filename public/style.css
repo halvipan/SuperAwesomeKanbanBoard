@@ -6,7 +6,7 @@
 body {
     font-family: 'Quicksand', sans-serif;
     color: #0E192F;
-    background-color: #E7EAEF
+    background-color: #E7EAEF;
 }
 
 form {
@@ -294,9 +294,10 @@ a:link{
 }
 
 footer {
-    position: relative;
+    position: fixed;
     width: 100vw;
     bottom: 0;
+    height: 6vh;
     padding: 1vh;
     color: white;
     background-color: #1F487E;
@@ -343,7 +344,7 @@ footer {
 .userTaskProjectName {
     padding: 1vh;
     background-color: #1F487E;
-    font-size: 1.5vh;
+    font-size: 1vh;
     color: white;
 }
 

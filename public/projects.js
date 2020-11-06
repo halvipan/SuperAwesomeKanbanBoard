@@ -100,7 +100,7 @@ const update = {
       headers: {
         "Content-type": "application/json",
       },
-      body: { UserId: task.UserId },
+      body: JSON.stringify({ UserId: task.UserId }),
     });
     return state;
   },
